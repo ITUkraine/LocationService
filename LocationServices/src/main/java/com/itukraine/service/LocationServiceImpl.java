@@ -9,27 +9,25 @@ import com.itukraine.model.Location;
 import com.itukraine.repository.LocationRepository;
 
 @Service
-public class LocationServiceImpl implements LocationService{
-	
-	    private final LocationRepository repository;
-	 
-	    @Autowired
-	    LocationServiceImpl(LocationRepository repository) {
-	        this.repository = repository;
-	    }
+public class LocationServiceImpl implements LocationService {
 
-	  	public Location create(Location location) {
-	    	Location persisted = location;
-	        persisted = repository.save(persisted);
-	        return persisted;
-	    }
-	  	
-	    public List<Location> findAll() {
-	      return repository.findAll();
-	    }
-	    
-	    public List<Location> findLocationsWithinProximity(double latitude, double longitude, double distance){
-	    	return repository.findLocationsWithinProximity(latitude, longitude, distance);
-	    }
-	 
+    private final LocationRepository repository;
+
+    @Autowired
+    LocationServiceImpl(LocationRepository repository) {
+	this.repository = repository;
+    }
+
+    public Location create(Location location) {
+	return repository.save(location);
+    }
+
+    public List<Location> findAll() {
+	return repository.findAll();
+    }
+
+    public List<Location> findLocationsWithinProximity(double latitude, double longitude, double distance) {
+	return repository.findLocationsWithinProximity(latitude, longitude, distance);
+    }
+
 }

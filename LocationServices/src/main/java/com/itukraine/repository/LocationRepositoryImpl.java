@@ -14,14 +14,16 @@ import com.itukraine.model.Location;
 @Repository
 public class LocationRepositoryImpl implements LocationRepositoryCustom {
 
+	private static final double EARTH_RADIUS = 3963.192;
+
 	@Autowired
 	MongoTemplate template;
 
-	public List<Location> findLocationsWithinProximity(double latitude,
-			double longitude, double distance) {
-		Circle circle = new Circle(latitude, longitude, distance);
+	@Override
+	public List<Location> findLocationsWithinProximity(double latitude, double longitude, double distance) {
+		Circle circle = new Circle(latitude, longitude, distance / EARTH_RADIUS);
 		Query query = new Query(Criteria.where("location").within(circle));
-		List<Location> locations = template.find(query,Location.class);
+		List<Location> locations = template.find(query, Location.class);
 		return locations;
 	}
 }

@@ -4,59 +4,61 @@ import org.springframework.data.annotation.Id;
 
 public class Location {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	private Coordinats location;
-	private long timestamp;
-	private long subjectID;
-	
-	public Location(){}
+    private Coordinats location;
+    private long timestamp;
+    private long subjectID;
 
-	public Coordinats getLocation() {
-		return location;
+    public Location() {
+    }
+
+    public Coordinats getLocation() {
+	return location;
+    }
+
+    public void setLocation(Coordinats location) {
+	this.location = location;
+    }
+
+    public long getTimestamp() {
+	return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+	this.timestamp = timestamp;
+    }
+
+    public long getSubjectID() {
+	return subjectID;
+    }
+
+    public void setSubjectID(long subjectID) {
+	this.subjectID = subjectID;
+    }
+
+    class Coordinats {
+	private double latitude;
+	private double longitude;
+
+	public Coordinats() {
 	}
 
-	public void setLocation(Coordinats location) {
-		this.location = location;
+	public double getLatitude() {
+	    return latitude;
 	}
 
-	public long getTimestamp() {
-		return timestamp;
+	public void setLatitude(double latitude) {
+	    this.latitude = latitude;
 	}
 
-	public void setTimestamp(long timestamp) {
-		this.timestamp = timestamp;
+	public double getLongitude() {
+	    return longitude;
 	}
 
-	public long getSubjectID() {
-		return subjectID;
+	public void setLongitude(double longitude) {
+	    this.longitude = longitude;
 	}
-
-	public void setSubjectID(long subjectID) {
-		this.subjectID = subjectID;
-	}
-	
-	class Coordinats{
-		private double latitude;
-		private double longitude;
-		
-		public Coordinats(){}
-
-		public double getLatitude() {
-			return latitude;
-		}
-
-		public void setLatitude(double latitude) {
-			this.latitude = latitude;
-		}
-
-		public double getLongitude() {
-			return longitude;
-		}
-
-		public void setLongitude(double longitude) {
-			this.longitude = longitude;
-		}
-	}
+    }
 }

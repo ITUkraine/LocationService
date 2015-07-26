@@ -1,4 +1,3 @@
-
 package com.itukraine.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
